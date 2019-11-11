@@ -5,7 +5,7 @@ The goal of this project is an implementation of neural network to classificate 
 # Instructions
 
 - Download the csv file
-- Replace the directory with the location of your csv file (reviews of products)
+- Replace the directory in the variable "path" with the location of your csv file (reviews of products)
 
 # Language
 
