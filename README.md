@@ -9,7 +9,7 @@ The goal of this project is an implementation of neural network to classificate 
 
 # Language
 
-The code was developed in python
+The code was developed in python.
 
 # Libraries Dependencies 
 
