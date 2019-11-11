@@ -11,10 +11,10 @@ The goal of this project is an implementation of neural network to classificate 
 
 The code was developed in python
 
-# Dependencies 
+# Libraries Dependencies 
 
-- Pandas Library
-- Numpy Library
-- Sklearn Library
+- Pandas
+- Numpy
+- Sklearn
 
 
