@@ -1,4 +1,4 @@
-#Bibliotecas necessárias para tratamento dos dados e rede neural
+# Bibliotecas necessárias para tratamento dos dados e rede neural
 import os
 import pandas as pd
 import nltk
@@ -226,58 +226,60 @@ def classificacao(sentenca, show_details=False):
     return resultados_finais
 
 
-exemplos_negativos = teste[teste['SENTIMENT'] == 0] #Dados de teste com comentarios negativos
-exemplos_positivos = teste[teste['SENTIMENT'] == 1] #Dados de teste com comentarios negativos
+if __name__ == "__main__":
+
+    exemplos_negativos = teste[teste['SENTIMENT'] == 0] #Dados de teste com comentarios negativos
+    exemplos_positivos = teste[teste['SENTIMENT'] == 1] #Dados de teste com comentarios negativos
 
 
-#Contando quantas classificações negativas aconteceram
-qtd_negativos_corretos = 0
-qtd_negativos_errados = 0
+    #Contando quantas classificações negativas aconteceram
+    qtd_negativos_corretos = 0
+    qtd_negativos_errados = 0
 
-print('-------------NEGATIVAS-------------\n')
-for elemento in range(len(list(exemplos_negativos['OPINIONS']))):
-    resultados = []
-    resultados_finais = []
-    x = classificacao(list(exemplos_negativos['OPINIONS'])[elemento])
-    for i in range(len(x)):
-        resultados.append(i)
-        resultados.append(x[i][0])
-        resultados.append(x[i][1])
-        if x[i][0] == 1:
-            qtd_negativos_errados += 1
-        if x[i][0] == 0:
-            qtd_negativos_corretos += 1
-    resultados_finais.append(resultados)
+    print('-------------NEGATIVAS-------------\n')
+    for elemento in range(len(list(exemplos_negativos['OPINIONS']))):
+        resultados = []
+        resultados_finais = []
+        x = classificacao(list(exemplos_negativos['OPINIONS'])[elemento])
+        for i in range(len(x)):
+            resultados.append(i)
+            resultados.append(x[i][0])
+            resultados.append(x[i][1])
+            if x[i][0] == 1:
+                qtd_negativos_errados += 1
+            if x[i][0] == 0:
+                qtd_negativos_corretos += 1
+        resultados_finais.append(resultados)
 
-print('Negativos Falsos: ', qtd_negativos_errados)
-print('Negativos Corretos: ', qtd_negativos_corretos)
-print('Acertou Negativos%: ', (qtd_negativos_corretos/(qtd_negativos_errados + qtd_negativos_corretos))*100)
-
-
-#Contando quantas classificações positivas aconteceram
-qtd_positivos_corretos = 0
-qtd_positivos_errados = 0
-
-print('\n-------------POSITIVAS-------------\n')
-for elemento in range(len(list(exemplos_positivos['OPINIONS']))):
-    resultados = []
-    resultados_finais = []
-    x = classificacao(list(exemplos_positivos['OPINIONS'])[elemento])
-    for i in range(len(x)):
-        resultados.append(i)
-        resultados.append(x[i][0])
-        resultados.append(x[i][1])
-        if x[i][0] == 1:
-            qtd_positivos_corretos += 1
-        if x[i][0] == 0:
-            qtd_positivos_errados += 1
-    resultados_finais.append(resultados)
+    print('Negativos Falsos: ', qtd_negativos_errados)
+    print('Negativos Corretos: ', qtd_negativos_corretos)
+    print('Acertou Negativos%: ', (qtd_negativos_corretos/(qtd_negativos_errados + qtd_negativos_corretos))*100)
 
 
-print('Positivos Falsos: ', qtd_positivos_errados)
-print('Positivos Corretos: ', qtd_positivos_corretos)
-print('Acertou Positivos%: ', (qtd_positivos_corretos/(qtd_positivos_corretos + qtd_positivos_errados))*100)
+    #Contando quantas classificações positivas aconteceram
+    qtd_positivos_corretos = 0
+    qtd_positivos_errados = 0
 
-print('\n-------------ACURÁCIA-------------\n')
+    print('\n-------------POSITIVAS-------------\n')
+    for elemento in range(len(list(exemplos_positivos['OPINIONS']))):
+        resultados = []
+        resultados_finais = []
+        x = classificacao(list(exemplos_positivos['OPINIONS'])[elemento])
+        for i in range(len(x)):
+            resultados.append(i)
+            resultados.append(x[i][0])
+            resultados.append(x[i][1])
+            if x[i][0] == 1:
+                qtd_positivos_corretos += 1
+            if x[i][0] == 0:
+                qtd_positivos_errados += 1
+        resultados_finais.append(resultados)
 
-print('Acertou no Total%: ', ((qtd_positivos_corretos + qtd_negativos_corretos)/(qtd_positivos_corretos + qtd_positivos_errados + qtd_negativos_errados + qtd_negativos_corretos))*100)
+
+    print('Positivos Falsos: ', qtd_positivos_errados)
+    print('Positivos Corretos: ', qtd_positivos_corretos)
+    print('Acertou Positivos%: ', (qtd_positivos_corretos/(qtd_positivos_corretos + qtd_positivos_errados))*100)
+
+    print('\n-------------ACURÁCIA-------------\n')
+
+    print('Acertou no Total%: ', ((qtd_positivos_corretos + qtd_negativos_corretos)/(qtd_positivos_corretos + qtd_positivos_errados + qtd_negativos_errados + qtd_negativos_corretos))*100)
